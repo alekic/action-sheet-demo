@@ -39,7 +39,7 @@ export default function HomeScreen({ navigation }) {
           { icon: 'settings', title: 'Settings', onPress: () => console.log('Settings') },
         ]}
       />
-    </SafeAreaView >
+    </SafeAreaView>
   );
 }
 

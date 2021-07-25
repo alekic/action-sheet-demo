@@ -22,12 +22,12 @@ const ActionSheet = React.forwardRef((props, ref) => {
 
   const renderItems = () => {
     return items.map((item, index) => {
-      if (item === 'separator') {
-        return <Separator key={index} />;
-      }
-
       if (renderItem) {
         return renderItem({ item, index });
+      }
+
+      if (item === 'separator') {
+        return <Separator key={index} />;
       }
 
       return (
@@ -68,11 +68,6 @@ const ActionSheet = React.forwardRef((props, ref) => {
 });
 
 const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    flex: 1,
-    justifyContent: 'center'
-  },
   contentContainer: {
     backgroundColor: 'white'
   },
