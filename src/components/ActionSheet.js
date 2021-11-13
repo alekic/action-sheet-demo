@@ -1,24 +1,17 @@
-import React, { useImperativeHandle, useState } from 'react';
+import React from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import Modal from 'react-native-modal';
 
 import ListItem from './ListItem';
 import Separator from './Separator';
 
-const ActionSheet = React.forwardRef((props, ref) => {
-
-  const {
-    contentContainerStyle,
-    items,
-    renderItem
-  } = props;
-
-  const [isVisible, setIsVisible] = useState(false);
-
-  const hide = () => setIsVisible(false);
-  const show = () => setIsVisible(true);
-
-  useImperativeHandle(ref, () => ({ hide, show }));
+export default function ActionSheet({
+  contentContainerStyle,
+  isVisible,
+  items,
+  onDismiss,
+  renderItem
+}) {
 
   const renderItems = () => {
     return items.map((item, index) => {
@@ -35,7 +28,7 @@ const ActionSheet = React.forwardRef((props, ref) => {
           {...item}
           key={index}
           onPress={() => {
-            hide();
+            onDismiss();
             item.onPress();
           }}
         />
@@ -47,8 +40,8 @@ const ActionSheet = React.forwardRef((props, ref) => {
     <Modal
       backdropTransitionOutTiming={0}
       isVisible={isVisible}
-      onBackdropPress={hide}
-      onSwipeComplete={hide}
+      onBackdropPress={onDismiss}
+      onSwipeComplete={onDismiss}
       style={styles.modal}
       swipeDirection={['down']}
     >
@@ -65,7 +58,7 @@ const ActionSheet = React.forwardRef((props, ref) => {
       </View>
     </Modal>
   );
-});
+};
 
 const styles = StyleSheet.create({
   contentContainer: {
@@ -84,5 +77,3 @@ const styles = StyleSheet.create({
     margin: 0
   }
 });
-
-export default ActionSheet;
