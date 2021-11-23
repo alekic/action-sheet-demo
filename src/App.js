@@ -8,7 +8,7 @@ import AppNavigator from './AppNavigator';
 
 enableScreens();
 
-function App() {
+export default function App() {
   return (
     <NavigationContainer>
       <AppNavigator />
@@ -16,4 +16,4 @@ function App() {
   );
 }
 
-export default registerRootComponent(App);
+registerRootComponent(App);
