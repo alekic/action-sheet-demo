@@ -40,6 +40,7 @@ export default function ActionSheet({
     <Modal
       backdropTransitionOutTiming={0}
       isVisible={isVisible}
+      onBackButtonPress={onDismiss}
       onBackdropPress={onDismiss}
       onSwipeComplete={onDismiss}
       style={styles.modal}
