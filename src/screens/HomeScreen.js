@@ -6,6 +6,15 @@ import { Item } from 'react-navigation-header-buttons';
 import ActionSheet from '../components/ActionSheet';
 import { MaterialHeaderButtons } from '../components/HeaderButtons';
 
+const items = [
+  { icon: 'save',     title: 'Save',     onPress: () => console.log('Save')     },
+  { icon: 'save-alt', title: 'Save As',  onPress: () => console.log('Save As')  },
+  { icon: 'history',  title: 'History',  onPress: () => console.log('History')  },
+  { icon: 'print',    title: 'Print',    onPress: () => console.log('Print')    },
+  'separator',
+  { icon: 'settings', title: 'Settings', onPress: () => console.log('Settings') },
+];
+
 export default function HomeScreen({ navigation }) {
   const [isActionSheetVisible, setIsActionSheetVisible] = useState(false);
 
@@ -24,7 +33,7 @@ export default function HomeScreen({ navigation }) {
         </MaterialHeaderButtons>
       )
     });
-  }, []);
+  }, [navigation]);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -33,14 +42,7 @@ export default function HomeScreen({ navigation }) {
       <ActionSheet
         isVisible={isActionSheetVisible}
         onDismiss={hideActionSheet}
-        items={[
-          { icon: 'save',     title: 'Save',     onPress: () => console.log('Save')     },
-          { icon: 'save-alt', title: 'Save As',  onPress: () => console.log('Save As')  },
-          { icon: 'history',  title: 'History',  onPress: () => console.log('History')  },
-          { icon: 'print',    title: 'Print',    onPress: () => console.log('Print')    },
-          'separator',
-          { icon: 'settings', title: 'Settings', onPress: () => console.log('Settings') },
-        ]}
+        items={items}
       />
     </SafeAreaView>
   );
